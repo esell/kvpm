@@ -1,4 +1,4 @@
-package keyvault
+package main
 
 /*
  * You need to set four environment variables before using the app:
@@ -127,7 +127,8 @@ func getSecret(basicClient keyvault.BaseClient, secname string) {
 		fmt.Printf("unable to get value for secret: %v\n", err)
 		os.Exit(1)
 	}
-	fmt.Println(*secretResp.Value)
+	//	fmt.Println(*secretResp.Value)
+	fmt.Printf("%v\n", secretResp)
 }
 
 func createUpdateSecret(basicClient keyvault.BaseClient, secname, secvalue string) {
