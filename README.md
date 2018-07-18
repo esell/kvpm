@@ -5,7 +5,7 @@ This is a toy password manager that uses [Azure Key Vault](https://docs.microsof
 
 # Install
 
-`go get github.com/esell/kv-pass-manager` :)
+`go get github.com/esell/kvpm` :)
 
 
 # Usage
@@ -24,16 +24,16 @@ You first need to set four environment variables before using the app:
 
 
 List the secrets currently in the vault (not the values though):
-`kv-pass`
+`kvpm`
 
 Get the value for a secret in the vault:
-`kv-pass YOUR_SECRETS_NAME`
+`kvpm show YOUR_SECRETS_NAME`
 
 Add or Update a secret in the vault:
-`kv-pass -edit YOUR_NEW_VALUE YOUR_SECRETS_NAME`
+`kvpm add YOUR_SECRETS_NAME YOUR_NEW_VALUE`
 
 Delete a secret in the vault:
-`kv-pass -delete YOUR_SECRETS_NAME`
+`kvpm delete YOUR_SECRETS_NAME`
 
 
 # Hacking
