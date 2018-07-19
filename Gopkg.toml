@@ -30,8 +30,16 @@
   version = "18.1.0"
 
 [[constraint]]
-  name = "github.com/Azure/go-autorest"
-  version = "10.13.0"
+  name = "github.com/chzyer/readline"
+  version = "1.4.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/esell/kvpm"
+
+[[constraint]]
+  name = "github.com/spf13/cobra"
+  version = "0.0.3"
 
 [prune]
   go-tests = true
