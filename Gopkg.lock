@@ -44,15 +44,6 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/esell/kvpm"
-  packages = [
-    "cmd",
-    "util"
-  ]
-  revision = "1fd6f6294f872cb823428b1078245983eb365d11"
-
-[[projects]]
   name = "github.com/inconshreveable/mousetrap"
   packages = ["."]
   revision = "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
@@ -82,6 +73,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "b75f361fefa18fa15f5c1b874f237eff101c956b1336544e040d3e3c2e30b8e7"
+  inputs-digest = "987b62d86c42eadf3449178a07e4580f96d8b3a5cbdd2e31cbb135cfd1a74398"
   solver-name = "gps-cdcl"
   solver-version = 1
