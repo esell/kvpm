@@ -2,6 +2,8 @@
 
 This is a toy password manager that uses [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/) as the backend to store your secrets/passwords. It supports the basic CRUD features.
 
+kvpm also supports the ability to dump secrets to a local file where all values are encrypted. This would be used in situations where internet access was not available.
+
 
 # Install
 
