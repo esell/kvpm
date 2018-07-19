@@ -22,18 +22,34 @@ You first need to set four environment variables before using the app:
 `KVAULT`: The name of your vault (just the name, not the full URL/path)
 
 
-
 List the secrets currently in the vault (not the values though):
-`kvpm`
+	
+	kvpm
+
 
 Get the value for a secret in the vault:
-`kvpm show YOUR_SECRETS_NAME`
+
+	kvpm show YOUR_SECRETS_NAME
+
+
+Get the value for a secret from local dump:
+
+	kvpm show -l YOUR_SECRETS_NAME
+
 
 Add or Update a secret in the vault:
-`kvpm add YOUR_SECRETS_NAME YOUR_NEW_VALUE`
+
+	kvpm add YOUR_SECRETS_NAME YOUR_NEW_VALUE
+
 
 Delete a secret in the vault:
-`kvpm delete YOUR_SECRETS_NAME`
+
+	kvpm delete YOUR_SECRETS_NAME
+
+
+Dump secrets from Key Vault to local disk (encrypted)
+
+	kvpm dump
 
 
 # Hacking
