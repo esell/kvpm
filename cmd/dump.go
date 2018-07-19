@@ -74,6 +74,8 @@ var dumpCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println(err)
 		}
+		// might as well
+		f.Chmod(0600)
 		_, err = f.Write(b)
 		if err != nil {
 			fmt.Println(err)
