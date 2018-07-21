@@ -47,7 +47,6 @@ var dumpCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		// group by ContentType
 		secList := make([]util.PassEntry, 1)
 		for _, secret := range secretList.Values() {
 			secretResp, err := basicClient.GetSecret(context.Background(), "https://"+vaultName+".vault.azure.net", path.Base(*secret.ID), "")
@@ -60,8 +59,13 @@ var dumpCmd = &cobra.Command{
 				fmt.Println(err)
 				os.Exit(1)
 			}
-			tempPassEntry := util.PassEntry{PassName: path.Base(*secret.ID), PassValue: encryptValue}
-			secList = append(secList, tempPassEntry)
+			if secret.ContentType != nil {
+				tempPassEntry := util.PassEntry{PassName: *secret.ContentType + "/" + path.Base(*secret.ID), PassValue: encryptValue}
+				secList = append(secList, tempPassEntry)
+			} else {
+				tempPassEntry := util.PassEntry{PassName: path.Base(*secret.ID), PassValue: encryptValue}
+				secList = append(secList, tempPassEntry)
+			}
 		}
 		blah := util.PassList{PassEntries: secList}
 		b, err := json.Marshal(blah)
