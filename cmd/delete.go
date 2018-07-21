@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"path"
 
 	"github.com/esell/kvpm/util"
 	"github.com/spf13/cobra"
@@ -23,7 +24,7 @@ var deleteCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		_, err = basicClient.DeleteSecret(context.Background(), "https://"+vaultName+".vault.azure.net", args[0])
+		_, err = basicClient.DeleteSecret(context.Background(), "https://"+vaultName+".vault.azure.net", path.Base(args[0]))
 		if err != nil {
 			fmt.Printf("error deleting secret: %v\n", err)
 			os.Exit(1)
