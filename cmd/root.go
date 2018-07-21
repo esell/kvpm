@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"strings"
 
 	"github.com/esell/kvpm/util"
 	"github.com/spf13/cobra"
@@ -49,15 +50,31 @@ var rootCmd = &cobra.Command{
 				secWithoutType = append(secWithoutType, path.Base(*secret.ID))
 			}
 		}
-
+		showIndent := "   "
 		for k, v := range secWithType {
-			fmt.Println(k)
-			for _, sec := range v {
-				fmt.Println(" |--- " + sec)
+			// split
+			splitOut := strings.Split(k, "/")
+			if len(splitOut) > 1 {
+				fmt.Printf(" |-- ")
+				for i := 0; i < len(splitOut); i++ {
+					if i == 0 {
+						fmt.Println(splitOut[i])
+					} else {
+						fmt.Println(" |" + buildIndent(i) + "|-- " + splitOut[i])
+					}
+				}
+				for _, sec := range v {
+					fmt.Println(" |" + buildIndent(len(splitOut)) + " |-- " + sec)
+				}
+			} else {
+				fmt.Println(" |-- " + k)
+				for _, sec := range v {
+					fmt.Println(" |" + showIndent + "|-- " + sec)
+				}
 			}
 		}
 		for _, wov := range secWithoutType {
-			fmt.Println(wov)
+			fmt.Println(" |-- " + wov)
 		}
 	},
 }
@@ -72,4 +89,12 @@ func Execute() {
 }
 
 func init() {
+}
+
+func buildIndent(level int) string {
+	var spaces strings.Builder
+	for i := 0; i < level; i++ {
+		fmt.Fprintf(&spaces, "%s", "   ")
+	}
+	return spaces.String()
 }
